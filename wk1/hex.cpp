@@ -5,9 +5,14 @@
 using namespace std;
 
 #define MaxargInput 3
+#define Hexpos1 2
+#define Hexpos2 2
+
 // Function prototype
 int checkrange(char *input);
 int checkcase (char *input);
+int checklength(char *input);
+
 //Function definition
 int main(int argc, char *argv[] ) {
 	//Check for number of arg
@@ -17,17 +22,14 @@ int main(int argc, char *argv[] ) {
 	}
 	//Check for the hex in range, check for format of the hex
 	for (int i1 = 1; i1 < MaxargInput; i1 ++) {
-		// Check for the length
-		if (strlen(argv[i1]) != 4) {
-			cout <<"Invalid hex" << endl;
+		if(checklength(argv[i1]) == -1)
 			return -1;
-		}
 		// Check for base
 		if (argv[i1][0] != '0' || tolower(argv[i1][1]) != 'x') {
 			cout << "Invalid Number Format" << endl;
 			return -1;
 		}	
-		for (int i = 2 ; i < 4; i ++) {
+		for (int i = Hexpos1 ; i < Hexpos2; i ++) {
 			// cout << checkcase(&argv[i1][i]) << endl; //Debug
 			if (checkcase(&argv[i1][i]) == -1) {
 				cout << argv[i1];
@@ -56,6 +58,15 @@ int checkcase (char *input) {
 	}
 	if(checkrange(input) == -2)
 		return -1;
+	return 0;
+}
+
+int checklength(char *input) {
+		// Check for the length
+		if (strlen(input) != 4) {
+			cout <<"Invalid hex" << endl;
+			return -1;
+		}
 	return 0;
 }
 
