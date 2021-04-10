@@ -41,9 +41,9 @@ int main(void) {
 	bufferread = new char [sizeread];
 
 	// Function call
-	// outputinsertion(insertionfile, bufferinsert, sizeins);
-	// outputget(putfile, bufferget, sizeput);
-	// outputread(writefile, bufferread, sizeread);
+	outputinsertion(insertionfile, bufferinsert, sizeins);
+	outputget(putfile, bufferget, sizeput);
+	outputread(writefile, bufferread, sizeread);
 	
 	cout << sizeins;
 	
