@@ -24,16 +24,34 @@ typedef struct {
 
 //Function Prototype;
 void InputEmployee (Employee &input) ;
-void OutputEmployee (const Employee &input);
 void getdate (DOB &input, string inp);
 bool CheckDay (int day, int month);
 bool ChkMonth(int month);
 bool Chkyy(int yyyy);
 void getDOB (DOB &input);
+
 // Function overloading
 int EmployeeSearch (Employee employee[], string Firstname, string LastName); 
 int EmployeeSearch (Employee employee[], string Firstname);
 int EmployeeSearch (Employee employee[], int id);
+
+ostream &operator << (ostream &output , DOB input) {
+	output << input.DD << "/" << input.MM << "/" << input.yyyy << endl;
+	return output;
+}
+
+ostream &operator << (ostream &output, Employee input) {
+	output << "Employee Information : " << endl;
+	output << "First Name: ";
+	output << input.FirstName << endl;
+	output << "Last Name: ";
+	output << input.LastName << endl;
+	output << "DoB: ";
+	output << input.DoB;
+	output << "id: ";
+	output << input.id;
+	return output;
+}
 
 //Function Definition
 int main(void) {
@@ -49,7 +67,7 @@ int main(void) {
 	//OutputEmployee
 	cout << "Employee information Output" << endl;
 	for(int i = 0; i < MAXEMPLOYEE; i ++) {
-		OutputEmployee(employee[i]);
+		cout << employee[i];
 		cout << endl;
 	}
 	// While loop to keep iterating until the correct result is Enter
@@ -142,20 +160,8 @@ bool Chkyy(int yyyy) {
 	return true;
 }
 
-void getDOB (DOB input) {
-	cout << input.DD << "/" << input.MM << "/" << input.yyyy << endl;
-}
-
 void OutputEmployee (const Employee &input) {
-	cout << "Employee Information : " << endl;
-	cout << "First Name: ";
-	cout << input.FirstName << endl;
-	cout << "Last Name: ";
-	cout << input.LastName << endl;
-	cout << "DoB: ";
-	getDOB(*input.DoB);
-	cout << "id: ";
-	cout << input.id;
+
 }
 
 // Search for employee
@@ -163,7 +169,7 @@ int EmployeeSearch (Employee employee[], string Firstname, string LastName) {
 	int res = 0;
 	for (int i = 0 ; i < MAXEMPLOYEE; i ++) {
 		if ( employee[i].FirstName.compare(Firstname) == 0 && LastName.compare(employee[i].LastName) == 0) {
-			cout << employee[i].FirstName << " " << employee[i].LastName <<  " " << "Id: " << employee[i].id << endl << endl;
+			cout << employee[i];
 			return res;
 		} 
 	}
@@ -198,4 +204,5 @@ int EmployeeSearch (Employee employee[], int id) {
 	res = -1;
 	return res;
 }
+
 
