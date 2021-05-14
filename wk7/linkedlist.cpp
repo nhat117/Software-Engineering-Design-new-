@@ -1,13 +1,18 @@
 #include <stdlib.h>
 #include <iostream>
+<<<<<<< HEAD
 
 using namespace std;
 
+=======
+using namespace std;
+>>>>>>> origin/master
 typedef  struct Node{
 	int data;
 	Node * next;
 } Node;
 
+<<<<<<< HEAD
 //Function Prototype
 void Insert (Node ** head, int x);
 inline void Insert(Node **head,int data, int n);
@@ -33,6 +38,8 @@ int main() {
 	return 0;
 }
 
+=======
+>>>>>>> origin/master
 // Insert a node at the beginning of the linked list
 void Insert (Node ** head, int x) {
 	Node * tmp = (Node *) malloc (sizeof(Node));
@@ -61,6 +68,7 @@ inline void Insert(Node **head,int data, int n) {
 	tmp2 -> next = tmp1;
 };
 
+<<<<<<< HEAD
 // Delete the node at nTh position
 inline void Delete (int n, Node **head) {
 	Node * temp1 = *head;
@@ -116,6 +124,9 @@ inline void Reverse(Node ** head) {
 }
 
 inline void Print (Node *head) {
+=======
+void Print (Node *head) {
+>>>>>>> origin/master
 	cout << "List is: ";
 	while (head != NULL) {
 		cout << head -> data <<" ";
@@ -124,6 +135,7 @@ inline void Print (Node *head) {
 	cout << endl;
 }
 
+<<<<<<< HEAD
 void PrintRec( Node * p) { // Print in reverse order
 	if (p == NULL) {
 		cout << endl;
@@ -142,4 +154,13 @@ void ReverseRec(Node *p, Node ** head) {
 	q -> next = p;
 	p -> next = NULL;
 	ReverseRec(p -> next, head);
+=======
+int main() {
+	Node * head = NULL; // Empty list;
+	Insert(&head, 2, 1); //First node
+	Insert(&head, 3, 2);
+	Insert(&head, 4, 1);
+	Insert(&head, 5, 2);
+	Print(head);
+>>>>>>> origin/master
 }
